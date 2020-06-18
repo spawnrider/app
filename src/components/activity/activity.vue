@@ -33,11 +33,7 @@
 			<div class="content">
 				<details v-if="activity.action !== 'external' && activity.changes && activity.name">
 					<summary class="title">
-						<v-user-popover
-							v-if="activity.action_by"
-							:id="activity.action_by"
-							placement="top"
-						>
+						<v-user-popover :id="activity.action_by" placement="top">
 							<span class="name">{{ activity.name }}</span>
 						</v-user-popover>
 						<div

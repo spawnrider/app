@@ -845,14 +845,14 @@ export default {
 							if (act.action_by) {
 								name = act.action_by.first_name + ' ' + act.action_by.last_name;
 							} else {
-								name = 'Public';
+								name = 'Unknown User';
 							}
 
 							return {
 								id: act.id,
 								date,
 								name,
-								action_by: act.action_by.id,
+								action_by: act.action_by?.id,
 								action: act.action.toLowerCase(),
 								comment: act.comment
 							};
