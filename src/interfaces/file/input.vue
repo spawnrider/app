@@ -136,7 +136,7 @@ export default {
 					.pop()
 					.toUpperCase() +
 				' • ' +
-				this.$d(new Date(this.image.uploaded_on), 'short')
+				this.$d(new Date(this.image.uploaded_on.replace(/-/g, '/')), 'short')
 			);
 		},
 		subtitleExtra() {
