@@ -165,7 +165,9 @@ export default {
 				const githubVersionResponse = await axios.get(
 					'https://api.github.com/repos/directus/directus/tags'
 				);
-				this.lastTag = githubVersionResponse.data[0].name;
+				this.lastTag = githubVersionResponse.data.find(
+					tag => tag.name.includes('-') === false
+				).name;
 			} catch {
 				console.log("Couldn't fetch latests version of Directus from GitHub");
 			}
