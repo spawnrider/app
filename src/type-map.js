@@ -228,7 +228,7 @@ export default {
 	m2o: {
 		description: 'fieldtypes.m2o',
 		mysql: {
-			datatypes: ['CHAR', 'VARCHAR', 'INT'],
+			datatypes: ['CHAR', 'VARCHAR', 'INT', 'BIGINT'],
 			default: 'INT'
 		}
 	},
