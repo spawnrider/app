@@ -246,3 +246,7 @@ body.dark .tox .tox-toolbar__overflow {
   margin-bottom: 10px;
   color: var(--page-text-color);
 }
+
+.tox.tox-tinymce-aux {
+	z-index: 1500;
+}

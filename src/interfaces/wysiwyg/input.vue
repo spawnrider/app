@@ -19,7 +19,7 @@
 					text: $t('done')
 				}
 			}"
-			@close="newInlineFile = false"
+			@close="closeInlineFileModal"
 			@done="selectCallback"
 		>
 			<div class="body">
@@ -292,8 +292,13 @@ export default {
 			return null;
 		},
 		selectFile(callback) {
+			// Prevents file selection to be hide by tinymce dialog
+			document.querySelector('.tox.tox-tinymce-aux').style.display = 'none';
 			this.newInlineFile = true;
 			this.selectCallback = async () => {
+				// restore tinymce dialog display
+				document.querySelector('.tox.tox-tinymce-aux').style.display = 'block';
+				console.log(this);
 				let id;
 
 				if (typeof this.selectedFile === 'object') {
@@ -312,6 +317,11 @@ export default {
 				// Empty the selectedfile so the file isn't selected again when you add an additional file
 				this.selectedFile = null;
 			};
+		},
+		closeInlineFileModal() {
+			this.newInlineFile = false;
+			// restore tinymce dialog display
+			document.querySelector('.tox.tox-tinymce-aux').style.display = 'block';
 		}
 	}
 };
