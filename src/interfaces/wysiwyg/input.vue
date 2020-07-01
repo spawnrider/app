@@ -4,7 +4,7 @@
 			ref="editorElement"
 			:init="initOptions"
 			:value="value"
-			@onKeyUp="updateValue"
+			@onKeyUp="planToUpdateValue"
 			@onExecCommand="updateValue"
 			@onBlur="updateValue"
 			@onPaste="updateValue"
@@ -273,7 +273,7 @@ export default {
 		}
 	},
 	created() {
-		this.updateValue = debounce(this.updateValue, 200);
+		this.planToUpdateValue = debounce(this.updateValue, 200);
 	},
 	methods: {
 		updateValue() {
@@ -298,7 +298,6 @@ export default {
 			this.selectCallback = async () => {
 				// restore tinymce dialog display
 				document.querySelector('.tox.tox-tinymce-aux').style.display = 'block';
-				console.log(this);
 				let id;
 
 				if (typeof this.selectedFile === 'object') {
