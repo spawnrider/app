@@ -251,7 +251,7 @@ export default {
 			window.open(this.image.data.full_url);
 		},
 		saveUpload(response) {
-			this.image = response.data.data;
+			this.image = response.data;
 			// We know that the primary key of directus_files is called `id`
 			this.$emit('input', this.image.id);
 		},

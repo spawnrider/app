@@ -27,7 +27,7 @@ export default {
 			return this.filetype && this.filetype.startsWith('image');
 		},
 		icon() {
-			return getIcon(this.filetype);
+			return getIcon(this.filetype || '');
 		},
 		imageUrl() {
 			if (!this.isImage) return null;
