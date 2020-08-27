@@ -1,13 +1,9 @@
 import { SDK } from '@directus/sdk-js/dist/esm/index.js';
-
-const path = window.location.pathname;
-const parts = path.split('/');
-const adminIndex = parts.indexOf('admin');
-const apiRootPath = parts.slice(0, adminIndex).join('/') + '/';
+import apiRootURL from './config.js'
 
 const client = new SDK({
 	mode: 'cookie',
-	url: apiRootPath
+	url: apiRootURL
 });
 
 export default client;

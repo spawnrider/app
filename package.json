@@ -32,6 +32,7 @@
     "deep-object-diff": "^1.1.0",
     "hex-rgb": "^4.1.0",
     "jsonlint-mod": "^1.7.5",
+    "ky": "^0.23.0",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.19",
     "marked": "^0.8.0",

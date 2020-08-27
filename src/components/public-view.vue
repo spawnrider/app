@@ -16,9 +16,9 @@
 		</div>
 		<div class="art" :style="artStyles">
 			<img
-				v-if="project_foreground.asset_url"
+				v-if="project_foreground.url"
 				class="logo"
-				:src="project_foreground.asset_url"
+				:src="project_foreground.url"
 				:alt="project_name"
 			/>
 			<div
@@ -37,8 +37,8 @@ import marked from 'marked';
 
 const defaults = {
 	project_color: 'project-background-color',
-	project_background: { asset_url: null },
-	project_foreground: { asset_url: null },
+	project_background: { url: null },
+	project_foreground: { url: null },
 	project_name: 'Directus',
 	project_public_note: null
 };
@@ -58,8 +58,8 @@ export default {
 	computed: {
 		...mapGetters(['currentProject']),
 		artStyles() {
-			if (this.project_background?.asset_url) {
-				return { backgroundImage: `url(${this.project_background?.asset_url})` };
+			if (this.project_background?.url) {
+				return { backgroundImage: `url(${this.project_background?.url})` };
 			}
 
 			return {

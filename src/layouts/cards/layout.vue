@@ -88,7 +88,7 @@ export default {
 
 				if (file.type.startsWith('image') === false) return null;
 
-				if (file.type.includes('svg')) return file.data.asset_url;
+				if (file.type.includes('svg')) return file.data.url;
 
 				const fit = this.viewOptions.fit || 'crop';
 

@@ -4,6 +4,8 @@ import router from '@/router';
 import hydrateStore from '@/hydrate';
 import { loadLanguageAsync } from '@/lang/';
 import isCloudProject from '@/helpers/is-cloud-project';
+import apiRootURL from './../config';
+import ky from 'ky';
 
 import {
 	RESET,
@@ -172,12 +174,12 @@ export async function setCurrentProject({ commit, dispatch, state, getters }, ke
 }
 
 export async function updateProjectInfo({ commit, state }, key) {
-	const apiRootPath = state.apiRootPath;
+	const apiRootPath = apiRootURL;
 	const url = apiRootPath + key + '/';
 	commit(SET_PROJECT_STATUS, { key: key, status: 'loading' });
 
 	try {
-		const response = await axios.get(url);
+		const response = await ky.get(url, {'credentials': 'include'}).json();
 		const {
 			project_name,
 			project_foreground,
@@ -187,8 +189,8 @@ export async function updateProjectInfo({ commit, state }, key) {
 			project_public_note,
 			telemetry,
 			default_locale
-		} = response.data.data.api;
-		const authenticated = response.data.public === undefined;
+		} = response.data.api;
+		const authenticated = response.public === undefined;
 
 		commit(UPDATE_PROJECT, {
 			key: key,
@@ -213,7 +215,7 @@ export async function updateProjectInfo({ commit, state }, key) {
 
 export async function getProjects({ state, dispatch, commit }, force) {
 	const currentProjectKey = state.currentProjectKey;
-	const apiRootPath = state.apiRootPath;
+	const apiRootPath = apiRootURL;
 
 	if (force === true || state.projects === null || state.projects === false) {
 		const url = apiRootPath + 'server/projects';

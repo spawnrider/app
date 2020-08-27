@@ -47,6 +47,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 import VSignal from '../../signal.vue';
+import apiRootURL from './../../../config'
 
 export default {
 	name: 'ProjectSwitcher',
@@ -65,7 +66,7 @@ export default {
 			}
 		},
 		apiURL() {
-			return window.location.origin + this.apiRootPath + this.currentProjectKey;
+			return apiRootURL + this.currentProjectKey;
 		},
 		tooltipContent() {
 			let latency = this.latency[this.latency.length - 1].latency;
